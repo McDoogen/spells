@@ -1,0 +1,29 @@
+body {
+    background: white;
+}
+
+.content {
+    background: #aaaaaa;
+    display: grid;
+    grid-gap: 0px 0px;
+}
+
+.content > nav {
+    background: #eeeeee;
+}
+
+.content > header {
+    background: #eeeeee;
+}
+
+.content > aside {
+    background: #eeeeee;
+}
+
+.content > section {
+    background: #eeeeee;
+}
+
+.content > footer {
+    background: #dddddd;
+}
