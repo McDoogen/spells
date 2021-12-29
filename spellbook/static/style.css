@@ -5,25 +5,41 @@ body {
 .content {
     background: #aaaaaa;
     display: grid;
-    grid-gap: 0px 0px;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:
+    "h h h"
+    "n n n"
+    "a s s"
+    "a f f";
+    grid-template-rows: 100px 50px 1fr 1fr;
+    grid-template-columns: 200px 1fr;
+}
+
+
+.content > header {
+    background: #8ca0ff;
+    grid-area: h;
+    text-align: center;
 }
 
 .content > nav {
-    background: #eeeeee;
-}
-
-.content > header {
-    background: #eeeeee;
+    background: #ffa08c;
+    grid-area: n;
+    text-align: left;
 }
 
 .content > aside {
-    background: #eeeeee;
+    background: #71ff64;
+    grid-area: a;
 }
 
 .content > section {
-    background: #eeeeee;
+    background: #ffff64;
+    grid-area: s;
 }
 
 .content > footer {
     background: #dddddd;
+    grid-area: f;
 }

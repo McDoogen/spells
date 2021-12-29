@@ -18,12 +18,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
-    def index():
-        return "Hello, Index!"
-
     from . import db
     db.init_app(app)
+
+    from . import index
+    app.register_blueprint(index.bp)
 
     from . import spell
     app.register_blueprint(spell.bp)

@@ -2,19 +2,5 @@
 <title>{% block title %}{% endblock %} :D</title>
 <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}">
 <section class='content'>
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-    <nav>
-        {% block nav %}{% endblock %}
-    </nav>
-    <aside>
-        {% block ingredients %}{% endblock %}
-    </aside>
-    <section>
-        {% block process %}{% endblock %}
-    </section>
-    <footer>
-        {% block hint %}{% endblock %}
-    </footer>
+    {% block content %}{% endblock %}
 </section>

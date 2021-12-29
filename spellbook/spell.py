@@ -11,14 +11,14 @@ bp = Blueprint('spell', __name__, url_prefix='/spell')
 
 @bp.route('/show', methods=['GET'])
 def show():
-    return render_template('spell/show.html')
+    db = get_db()
+    spell_scroll = db.execute('SELECT * FROM spells').fetchone()
+    ingredient_list = spell_scroll['ingredients'].split(',')
+    for i in range(len(ingredient_list)):
+        ingredient_list[i] = f"{i+1}. {ingredient_list[i].strip()}"
 
-@bp.route('/edit', methods=['GET', 'POST'])
-def edit():
-    if request.method == 'POST':
-        pass
-    
-    return render_template('spell/edit.html')
+    return render_template('spell/show.html', spell_scroll=spell_scroll, ingredient_list=ingredient_list)
+
 
 @bp.before_app_request
 def check():
