@@ -1,8 +1,10 @@
 import os
 from flask import Flask, request, render_template
+from flask_cors import CORS
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'spellbook.sqlite')
@@ -26,5 +28,10 @@ def create_app(test_config=None):
 
     from . import spell
     app.register_blueprint(spell.bp)
+
+    @app.route("/test")
+    def test():
+        return {"greeting" : "Hello from Flask!"}
+
 
     return app
