@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="UTF-8" />
+        <title> Spellbook Backend! :D </title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class = "content">
+            <header>
+                <h1> {{ spell_name }} </h1>
+                <h3> by: {{ spell_author }} </h3>
+            </header>
+            <aside>
+                <ol>
+                    {% for spell in spell_list %}
+                        <li>{{ spell }}</li>
+                    {% endfor %}
+                </ol>
+            </aside>
+            <section>
+                <h4>Process</h4>
+            </section>
+        </div>
+    </body>
+</html>

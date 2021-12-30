@@ -1,4 +1,4 @@
-# webapp
+# spellbook_webapp
 
 ## Project setup
 ```

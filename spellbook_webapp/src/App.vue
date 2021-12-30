@@ -1,17 +1,24 @@
 <template>
-  <div id="app">
+  <div id='app'>
     <p>{{ greeting }}</p>
     <p>{{ flaskGreeting }}</p>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
+  components: {
+    HelloWorld
+  },
   data: function() {
     return {
-      greeting: 'Hello Vue!',
-      flaskGreeting: ''
+      greeting: "Hello, Vue!",
+      flaskGreeting: ""
     }
   },
   created: async function() {

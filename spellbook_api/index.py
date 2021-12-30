@@ -25,7 +25,7 @@ def index():
         spell_list.append(item['spell_name'])
 
     return render_template(
-        'index/index.html',
+        'index.html',
         spell_name=spell_name,
         spell_author=spell_author,
         ingredient_list=ingredient_list,

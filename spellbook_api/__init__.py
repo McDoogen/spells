@@ -26,9 +26,6 @@ def create_app(test_config=None):
     from . import index
     app.register_blueprint(index.bp)
 
-    from . import spell
-    app.register_blueprint(spell.bp)
-
     @app.route("/test")
     def test():
         return {"greeting" : "Hello from Flask!"}
