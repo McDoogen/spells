@@ -1,11 +1,36 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="UTF-8" />
+        <title> Index! </title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body>
+        <div class = "content" id="app">
+            <header>
+                <h1> {{ spell_name }} </h1>
+                <h3> by: {{ spell_author }} </h3>
+            </header>
+            <nav> First Page > Second Page > HERE </nav>
+            <aside>
+                <ol>
+                    {% for spell in spell_list %}
+                    <li v-on:click="select_category(1)">{{ spell }}</li>
+                        <!-- <li v-for='ing in ing_list' v-on:click="select_category(ing)">[[ ing ]]</li> -->
+                    {% endfor %}
+                </ol>
+            </aside>
+            <section>
+                <h4 v-on:click="add_to_counter">Process</h4>
+                <button v-on:click="add_to_counter">Change to Spell</button>
+                <p> [[ counter ]] </p>
+                <p> [[ selected_category ]] </p>
+            </section>
+            <footer> Hints </footer>
 
-{% block title %} Show Spell {% endblock %}
+        </div>
 
-{% block content %}
-<header> Header </header>
-<nav> Nav </nav>
-<aside> Aside </aside>
-<section> Section </section>
-<footer> Footer </footer>
-{% endblock %}
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</html>
