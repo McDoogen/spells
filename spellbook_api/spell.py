@@ -6,7 +6,7 @@ from flask import (
 from flask.templating import render_template_string
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from spellbook.db import get_db
+from spellbook_api.db import get_db
 
 bp = Blueprint('spell', __name__, url_prefix='/spell')
 

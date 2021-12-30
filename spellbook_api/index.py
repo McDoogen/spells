@@ -5,7 +5,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from spellbook.db import get_db
+from spellbook_api.db import get_db
 
 bp = Blueprint('index', __name__, url_prefix='/')
 
