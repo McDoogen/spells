@@ -12,6 +12,7 @@ bp = Blueprint('index', __name__, url_prefix='/')
 @bp.route('/', methods=['GET'])
 def index():
     db = get_db()
+    db.init_db()
     spell_cursor = db.execute('SELECT * FROM spells').fetchone()
     ingredient_list = spell_cursor['ingredients'].split(',')
     spell_name = spell_cursor['spell_name']
@@ -31,3 +32,17 @@ def index():
         ingredient_list=ingredient_list,
         spell_list=spell_list
     )
+
+@bp.route("/test")
+def test():
+    db = get_db()
+    
+    spell_cursor = db.execute('SELECT * FROM spells').fetchone()
+    spell_name = spell_cursor['spell_name']
+    spell_author = spell_cursor['author']
+    spell_ingredients = spell_cursor['ingredients'].split(',')
+    
+    return {
+        "spell_name" : spell_name,
+        "author" : spell_author,
+        "ingredients" : spell_ingredients}

@@ -1,30 +1,37 @@
 <template>
-  <div id='app'>
-    <p>{{ greeting }}</p>
-    <p>{{ flaskGreeting }}</p>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <header>
+    <h1> {{ spell_name }} </h1>
+    <h3> by: {{ author }} </h3>
+  </header>
+  <aside>
+    <ol>
+        <li v-for="ingredient in ingredients" v-bind:key="ingredient.name">
+          {{ ingredient }}
+        </li>
+    </ol>
+  </aside>
+  <section>
+      <h4>Process</h4>
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data: function() {
     return {
-      greeting: "Hello, Vue!",
-      flaskGreeting: ""
+      spell_name: "",
+      author: "",
+      ingredients: ""
     }
   },
   created: async function() {
     const gResponse = await fetch("http://localhost:5000/test");
     const gObject = await gResponse.json();
-    this.flaskGreeting = gObject.greeting;
+    this.spell_name = gObject.spell_name;
+    this.author = gObject.author;
+    this.ingredients = gObject.ingredients;
   }
 }
 </script>
@@ -36,6 +43,32 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 60px;
+
+  background: #aaaaaa;
+  display: grid;
+  width: 1000px;
+  height: 800px;
+  grid-template-areas:
+  "h h"
+  "a s";
+  grid-template-rows: 150px 1fr;
+  grid-template-columns: 200px 1fr;
+}
+#app > header {
+    background: #8ca0ff;
+    grid-area: h;
+    text-align: center;
+}
+
+#app > aside {
+    background: #71ff64;
+    grid-area: a;
+    text-align: left;
+}
+
+#app > section {
+    background: #ffff64;
+    grid-area: s;
 }
 </style>
