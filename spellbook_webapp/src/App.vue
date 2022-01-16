@@ -1,18 +1,26 @@
 <template>
-  <header>
-    <h1> {{ spell_name }} </h1>
-    <h3> by: {{ author }} </h3>
-  </header>
-  <aside>
-    <ol>
-        <li v-for="ingredient in ingredients" v-bind:key="ingredient.name">
-          {{ ingredient }}
-        </li>
-    </ol>
-  </aside>
-  <section>
-      <h4>Process</h4>
-  </section>
+  <div id="fire-box">
+    <img src="./assets/fire.gif" />
+  </div>
+  <div id="spell-scroll">
+    <header>
+      <h1> {{ spell_name }} </h1>
+      <h3> by: {{ author }} </h3>
+    </header>
+    <aside>
+      <ol>
+          <li v-for="ingredient in ingredients" v-bind:key="ingredient.name">
+            {{ ingredient }}
+          </li>
+      </ol>
+    </aside>
+    <section>
+        <h4>Process</h4>
+    </section>
+  </div>
+  <div id="fire-box">
+    <img src="./assets/fire.gif"/>
+  </div>
 </template>
 
 <script>
@@ -37,38 +45,54 @@ export default {
 </script>
 
 <style>
+body {
+  overflow: hidden;
+  margin: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}
+#fire-box {
+  display: flex;
+  align-items: center;
+}
+
+#spell-scroll {
+  font: italic 1em "The Nautigal", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  padding: 60px;
+  padding: 20px 80px 20px 80px;
 
-  background: #aaaaaa;
+  background-image: url("./assets/scroll.png");
+  background-color: black;
+  background-size: 100%;
+  background-position-y: -90px;
   display: grid;
-  width: 1000px;
-  height: 800px;
   grid-template-areas:
   "h h"
   "a s";
   grid-template-rows: 150px 1fr;
   grid-template-columns: 200px 1fr;
 }
-#app > header {
-    background: #8ca0ff;
-    grid-area: h;
-    text-align: center;
+#spell-scroll > header {
+  background: #8ca0ffaa;
+  grid-area: h;
+  text-align: center;
 }
 
-#app > aside {
-    background: #71ff64;
-    grid-area: a;
-    text-align: left;
+#spell-scroll > aside {
+  background: #71ff64aa;
+  grid-area: a;
+  text-align: left;
 }
 
-#app > section {
-    background: #ffff64;
-    grid-area: s;
+#spell-scroll > section {
+  background: #ffff64aa;
+  grid-area: s;
 }
 </style>
