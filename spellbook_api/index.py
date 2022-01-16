@@ -40,8 +40,8 @@ def test():
     spell_cursor = db.execute('SELECT * FROM spells').fetchone()
     spell_name = spell_cursor['spell_name']
     spell_author = spell_cursor['author']
-    spell_ingredients = spell_cursor['ingredients'].split(',')
-    spell_process = spell_cursor['process'].split(',')
+    spell_ingredients = spell_cursor['ingredients'].split(';')
+    spell_process = spell_cursor['process'].split(';')
     
     return {
         "spell_name" : spell_name,
