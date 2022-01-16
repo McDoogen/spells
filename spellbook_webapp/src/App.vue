@@ -8,6 +8,7 @@
       <h3> by: {{ author }} </h3>
     </header>
     <aside>
+      <h4>Ingredients</h4>
       <ol>
           <li v-for="ingredient in ingredients" v-bind:key="ingredient.name">
             {{ ingredient }}
@@ -15,7 +16,12 @@
       </ol>
     </aside>
     <section>
-        <h4>Process</h4>
+      <h4>Process</h4>
+      <ol>
+          <li v-for="step in process" v-bind:key="step.description">
+            {{ step }}
+          </li>
+      </ol>
     </section>
   </div>
   <div id="fire-box">
@@ -31,7 +37,8 @@ export default {
     return {
       spell_name: "",
       author: "",
-      ingredients: ""
+      ingredients: "",
+      process: ""
     }
   },
   created: async function() {
@@ -40,6 +47,7 @@ export default {
     this.spell_name = gObject.spell_name;
     this.author = gObject.author;
     this.ingredients = gObject.ingredients;
+    this.process = gObject.process;
   }
 }
 </script>
@@ -88,6 +96,9 @@ body {
 #spell-scroll > aside {
   background: #71ff64aa;
   grid-area: a;
+}
+
+#spell-scroll > aside > ol {
   text-align: left;
 }
 
@@ -95,4 +106,9 @@ body {
   background: #ffff64aa;
   grid-area: s;
 }
+
+#spell-scroll > section > ol {
+  text-align: left;
+}
+
 </style>

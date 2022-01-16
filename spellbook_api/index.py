@@ -41,8 +41,10 @@ def test():
     spell_name = spell_cursor['spell_name']
     spell_author = spell_cursor['author']
     spell_ingredients = spell_cursor['ingredients'].split(',')
+    spell_process = spell_cursor['process'].split(',')
     
     return {
         "spell_name" : spell_name,
         "author" : spell_author,
-        "ingredients" : spell_ingredients}
+        "ingredients" : spell_ingredients,
+        "process" : spell_process}
