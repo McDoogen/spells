@@ -10,7 +10,7 @@
     <aside>
       <h4>Ingredients</h4>
       <ol>
-          <li v-for="ingredient in ingredients" v-bind:key="ingredient.name">
+          <li v-on:click="countUp" v-for="ingredient in ingredients" v-bind:key="ingredient.name">
             {{ ingredient }}
           </li>
       </ol>
@@ -23,6 +23,7 @@
           </li>
       </ol>
     </section>
+    <button v-on:click="countUp">{{counter}}</button>
   </div>
   <div id="fire-box">
     <img src="./assets/fire.gif"/>
@@ -38,7 +39,8 @@ export default {
       spell_name: "",
       author: "",
       ingredients: "",
-      process: ""
+      process: "",
+      counter: 0
     }
   },
   created: async function() {
@@ -48,6 +50,14 @@ export default {
     this.author = gObject.author;
     this.ingredients = gObject.ingredients;
     this.process = gObject.process;
+  },
+  methods: {
+    countUp: function (event) {
+      this.counter += 1;
+      if(event) {
+        alert(event.target.tagName);
+      }
+    }
   }
 }
 </script>
