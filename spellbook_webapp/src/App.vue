@@ -9,10 +9,13 @@
     </header>
     <aside>
       <h4>Ingredients</h4>
-      <ol>
-          <li v-on:click="countUp" v-for="ingredient in ingredients" v-bind:key="ingredient.name">
+      <ol v-if="displayList">
+          <li v-on:click="toggleDisplay(ingredient)" v-for="ingredient in ingredients" v-bind:key="ingredient.name">
             {{ ingredient }}
           </li>
+      </ol>
+      <ol v-else>
+          <li v-on:click="toggleDisplay()"> {{ selectedItem}} </li>
       </ol>
     </aside>
     <section>
@@ -23,7 +26,6 @@
           </li>
       </ol>
     </section>
-    <button v-on:click="countUp">{{counter}}</button>
   </div>
   <div id="fire-box">
     <img src="./assets/fire.gif"/>
@@ -40,7 +42,9 @@ export default {
       author: "",
       ingredients: "",
       process: "",
-      counter: 0
+      counter: 0,
+      displayList: false,
+      selectedItem: "NOTHING"
     }
   },
   created: async function() {
@@ -52,11 +56,13 @@ export default {
     this.process = gObject.process;
   },
   methods: {
-    countUp: function (event) {
+    countUp: function (message) {
       this.counter += 1;
-      if(event) {
-        alert(event.target.tagName);
-      }
+      alert(message)
+    },
+    toggleDisplay: function (message) {
+      this.displayList = !this.displayList
+      this.selectedItem = message;
     }
   }
 }
